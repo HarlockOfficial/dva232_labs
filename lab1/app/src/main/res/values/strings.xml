@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Lab1</string>
+    <string name="amount_input_hint">Insert the amount that you want to transform</string>
+    <string name="resource_error">Unknown Error, Try again</string>
 </resources>
