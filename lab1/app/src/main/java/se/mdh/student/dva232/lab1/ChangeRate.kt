@@ -1,7 +1,8 @@
 package se.mdh.student.dva232.lab1
 
 class ChangeRate {
-
+    //https://exchangeratesapi.io/
+    //https://www.countryflags.io/
     companion object {
         val toNonCurrency: Map<CurrencyType, Double> = mapOf(
                 CurrencyType.EUR to 1000.0,
