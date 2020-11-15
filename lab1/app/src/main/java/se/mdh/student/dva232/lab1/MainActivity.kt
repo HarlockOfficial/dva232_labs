@@ -11,11 +11,13 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var output: TextView
         private set
+    lateinit var input: EditText
+        private set
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val input: EditText = findViewById(R.id.user_input)
+        input = findViewById(R.id.user_input)
         output = findViewById(R.id.output)
 
         //add currencies to spinners
@@ -42,7 +44,7 @@ class MainActivity : AppCompatActivity() {
         input.addTextChangedListener(TextChangeEvent(mainActivity = this))
         findViewById<Button>(R.id.to_screen_two).setOnClickListener {
             startActivity(Intent(this.baseContext, ConversionRates::class.java).apply {
-                putExtra("se.mdh.student.dva232.lab1.Rates", ChangeRate.toNonCurrency.toString())
+                putExtra("se.mdh.student.dva232.lab1.Rates", (resources.getStringArray(R.array.currencies) as Array<String>))
             })
         }
     }

@@ -4,7 +4,7 @@ class ChangeRate {
     //https://exchangeratesapi.io/
     //https://www.countryflags.io/
     companion object {
-        val toNonCurrency: Map<CurrencyType, Double> = mapOf(
+        private val toNonCurrency: Map<CurrencyType, Double> = mapOf(
                 CurrencyType.EUR to 1000.0,
                 CurrencyType.USD to 1800.0,
                 CurrencyType.CNY to 7820.0,
