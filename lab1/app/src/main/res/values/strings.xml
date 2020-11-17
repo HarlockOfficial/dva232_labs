@@ -2,4 +2,10 @@
     <string name="app_name">Lab1</string>
     <string name="amount_input_hint">Insert the amount that you want to transform</string>
     <string name="resource_error">Unknown Error, Try again</string>
+    <string name="select_reference_currency">Select reference currency</string>
+    <string name="exchange_rates">Exchange rates</string>
+    <string name="currency_converter">Currency converter</string>
+    <string name="_0_0">0.0</string>
+    <string name="input_amount">Input amount...</string>
+    <string name="see_exchange_rates">See exchange rates</string>
 </resources>

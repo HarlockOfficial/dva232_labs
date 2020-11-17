@@ -36,8 +36,8 @@ class ConversionRates: Activity() {
                         continue
                     val row:View = layoutInflater.inflate(R.layout.conversion_table_row, currencyTable,false)
                     (row.findViewById(R.id.currency_code) as TextView).text = currency
-                    (row.findViewById(R.id.currency_change) as TextView).text =
-                        (round(ChangeRate.getExchange(startCurrency, CurrencyType.valueOf(currency))*1000.0)/1000.0).toString()
+                    (row.findViewById(R.id.currency_change) as TextView).text = "%,.5f".format(
+                            ChangeRate.getExchange(startCurrency, CurrencyType.valueOf(currency)))
                     currencyTable.addView(row)
                 }
             }
