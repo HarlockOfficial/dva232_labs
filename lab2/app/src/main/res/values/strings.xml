@@ -8,4 +8,5 @@
     <string name="_0_0">0.0</string>
     <string name="input_amount">Input amount...</string>
     <string name="see_exchange_rates">See exchange rates</string>
+    <string name="location_disabled">The app will not work well without geolocation</string>
 </resources>
