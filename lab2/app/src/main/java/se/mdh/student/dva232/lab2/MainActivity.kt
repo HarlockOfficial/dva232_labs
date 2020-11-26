@@ -76,11 +76,19 @@ class MainActivity : AppCompatActivity() {
                                 1
                             )[0].locale
                         ).currencyCode
+                        var eurIndex = -1
                         for (i in 0 until spinner.count) {
+                            if(spinner.getItemAtPosition(i).toString() == "EUR"){
+                                eurIndex = i
+                            }
                             if (spinner.getItemAtPosition(i).toString() == actCurrency) {
                                 spinner.setSelection(i)
+                                eurIndex = -1
                                 break
                             }
+                        }
+                        if(eurIndex != -1){
+                            spinner.setSelection(eurIndex)
                         }
                     }
                 }
