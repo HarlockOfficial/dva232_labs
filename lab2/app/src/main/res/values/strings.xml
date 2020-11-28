@@ -9,4 +9,6 @@
     <string name="input_amount">Input amount...</string>
     <string name="see_exchange_rates">See exchange rates</string>
     <string name="location_disabled">The app will not work well without geolocation</string>
+    <string name="see_plot">See the plot</string>
+    <string name="get_plot_data_error">Unknown error while getting the data to plot</string>
 </resources>

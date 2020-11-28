@@ -7,7 +7,6 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/textView2"
         android:layout_width="41dp"
         android:layout_height="30dp"
         android:background="?attr/actionModeCloseDrawable"
@@ -18,7 +17,6 @@
         app:layout_constraintTop_toBottomOf="@+id/user_input" />
 
     <TextView
-        android:id="@+id/titleTextView"
         android:layout_width="fill_parent"
         android:layout_height="167dp"
         android:layout_marginBottom="10dp"
@@ -92,13 +90,23 @@
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="209dp"
         android:layout_height="49dp"
-        android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:text="@string/see_exchange_rates"
         android:background="@color/colorPrimary"
+        android:text="@string/see_exchange_rates"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/to_screen_three"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/to_screen_three"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="209dp"
+        android:layout_height="49dp"
+        android:layout_marginBottom="16dp"
+        android:background="@color/colorPrimary"
+        android:text="@string/see_plot"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/to_screen_two" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
