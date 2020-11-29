@@ -72,18 +72,6 @@ class MainActivity : AppCompatActivity() {
 
                 //set listener for input
                 input.addTextChangedListener(TextChangeEvent(mainActivity = this@MainActivity))
-
-                //set listener for button
-                findViewById<Button>(R.id.to_screen_two).setOnClickListener {
-                    startActivity(Intent(this@MainActivity, ConversionRates::class.java).apply {
-                        putExtra("se.mdh.student.dva232.lab2.Rates", tmp.toString())
-                    })
-                }
-                findViewById<Button>(R.id.to_screen_three).setOnClickListener {
-                    startActivity(Intent(this@MainActivity, Plot::class.java).apply {
-                        putExtra("se.mdh.student.dva232.lab2.Rates", tmp.toString())
-                    })
-                }
             }
 
             //wait for permissions check
@@ -134,23 +122,30 @@ class MainActivity : AppCompatActivity() {
             }
 
             //change the input currency to country currency or EUR
-            var eurIndex = -1
+            var selected = -1
             for (i in 0 until spinner1.count) {
                 if (spinner1.getItemAtPosition(i).toString() == "EUR") {
-                    eurIndex = i
+                    selected = i
                 }
                 if (spinner1.getItemAtPosition(i).toString() == actCurrency) {
-                    runOnUiThread {
-                        spinner1.setSelection(i)
-                    }
-                    eurIndex = -1
+                    selected = i
                     break
                 }
             }
-            //valid currency not found
-            if (eurIndex != -1) {
-                runOnUiThread {
-                    spinner1.setSelection(eurIndex)
+            runOnUiThread {
+                spinner1.setSelection(selected)
+                //set listener for button
+                findViewById<Button>(R.id.to_screen_two).setOnClickListener {
+                    startActivity(Intent(this@MainActivity, ConversionRates::class.java).apply {
+                        putExtra("se.mdh.student.dva232.lab2.Rates", tmp.toString())
+                        putExtra("se.mdh.student.dva232.lab2.Default", selected)
+                    })
+                }
+                findViewById<Button>(R.id.to_screen_three).setOnClickListener {
+                    startActivity(Intent(this@MainActivity, Plot::class.java).apply {
+                        putExtra("se.mdh.student.dva232.lab2.Rates", tmp.toString())
+                        putExtra("se.mdh.student.dva232.lab2.Default", selected)
+                    })
                 }
             }
         }

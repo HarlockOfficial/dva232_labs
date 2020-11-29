@@ -25,6 +25,7 @@
         android:id="@+id/from"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="visible"
         app:layout_constraintEnd_toStartOf="@+id/to"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/start_currency" />
@@ -40,11 +41,11 @@
     <com.androidplot.xy.XYPlot
         android:id="@+id/plot"
         style="@style/APDefacto.Dark"
-        app:domainTitle="domain"
+        app:domainTitle="Date"
         app:lineLabelRotationBottom="-45"
         app:lineLabels="left|bottom"
-        app:rangeTitle="range"
-        app:title="A Simple XY Plot"
+        app:rangeTitle="Rate"
+        app:title=""
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
