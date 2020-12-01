@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -9,49 +10,66 @@
         android:id="@+id/start_currency"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/from"
         app:layout_constraintEnd_toStartOf="@+id/end_currency"
+        app:layout_constraintHorizontal_bias="0.315"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.806" />
 
     <Spinner
         android:id="@+id/end_currency"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="72dp"
+        app:layout_constraintBottom_toTopOf="@+id/to"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/start_currency"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.806" />
 
     <CalendarView
         android:id="@+id/from"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="193dp"
+        android:layout_height="288dp"
+        android:layout_marginStart="4dp"
         android:visibility="visible"
-        app:layout_constraintEnd_toStartOf="@+id/to"
+        app:layout_constraintBottom_toTopOf="@+id/plot"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/start_currency" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.87" />
 
     <CalendarView
         android:id="@+id/to"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="191dp"
+        android:layout_height="288dp"
+        app:layout_constraintBottom_toTopOf="@+id/plot"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/from"
-        app:layout_constraintTop_toBottomOf="@+id/end_currency" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.87" />
 
     <com.androidplot.xy.XYPlot
         android:id="@+id/plot"
         style="@style/APDefacto.Dark"
+        android:layout_width="fill_parent"
+        android:layout_height="400dp"
+        app:backgroundColor="#fff"
+        app:borderColor="#FFF"
         app:domainTitle="Date"
-        app:lineLabelRotationBottom="-45"
-        app:lineLabels="left|bottom"
-        app:rangeTitle="Rate"
-        app:title=""
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        app:domainTitleTextColor="#000"
+        app:graphBackgroundColor="#FFF"
+        app:gridBackgroundColor="#FFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/to"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.997"
+        app:lineLabelRotationBottom="-45"
+        app:lineLabelTextColorBottom="#000"
+        app:lineLabelTextColorLeft="#000"
+        app:lineLabels="left|bottom"
+        app:rangeTitle="Rate"
+        app:title="" />
 </androidx.constraintlayout.widget.ConstraintLayout>
