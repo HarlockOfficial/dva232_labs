@@ -25,9 +25,9 @@ class ItemSelectionEvent(private val input: Boolean, private val mainActivity: M
             val value: Double = mainActivity.input.text.toString().toDouble()
             mainActivity.output.text = CurrencyConverter(value, inputCurrency , outputCurrency).convert()
         }catch (unused: NumberFormatException) {
-            return;
+            return
         }catch (unused: UninitializedPropertyAccessException){
-            return;
+            return
         }
     }
 

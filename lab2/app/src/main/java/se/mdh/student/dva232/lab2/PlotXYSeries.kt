@@ -1,7 +1,8 @@
 package se.mdh.student.dva232.lab2
 
-import android.util.Log
 import com.androidplot.xy.XYSeries
+import java.text.SimpleDateFormat
+import java.util.*
 
 class PlotXYSeries(private val series: Map<String, Double>, private val title: String): XYSeries {
     override fun getTitle(): String {
@@ -13,8 +14,8 @@ class PlotXYSeries(private val series: Map<String, Double>, private val title: S
     }
 
     override fun getX(index: Int): Number {
-        val date: List<String> = series.keys.elementAt(index).split("-")
-        return (date[0]+date[1]+date[2]).toInt()
+        val date: Date? = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse(series.keys.elementAt(index))
+        return date!!.time
     }
 
     override fun getY(index: Int): Number {

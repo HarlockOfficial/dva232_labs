@@ -15,6 +15,7 @@ import org.json.JSONObject
 import java.text.FieldPosition
 import java.text.Format
 import java.text.ParsePosition
+import java.text.SimpleDateFormat
 import java.util.*
 
 
@@ -83,11 +84,17 @@ class Plot: Activity() {
     
     fun plot() {
         GlobalScope.launch(Dispatchers.IO) {
+            if(dateToChangeListener.date == dateFromChangeListener.date){
+                runOnUiThread{
+                    Toast.makeText(this@Plot, this@Plot.getString(R.string.invalid_date_selected), Toast.LENGTH_SHORT).show()
+                }
+                return@launch
+            }
             val data: JSONObject? = ChangeRate.getPlotData(
                     dateFromChangeListener.date,
                     dateToChangeListener.date
             )
-            if (data == null || data.length() == 0) {
+            if (data!!.length() == 0) {
                 runOnUiThread {
                     Toast.makeText(
                             this@Plot,
@@ -97,12 +104,17 @@ class Plot: Activity() {
                 }
                 return@launch
             }
-
+            val startValue = itemStartSelectionEvent.selectedItem.trim()
+            val endValue = itemEndSelectionEvent.selectedItem.trim()
+            if(startValue == endValue){
+                runOnUiThread {
+                    Toast.makeText(this@Plot, this@Plot.getString(R.string.invalid_currencies_selected), Toast.LENGTH_SHORT).show()
+                }
+                return@launch
+            }
             val currency: SortedMap<String, Double> = TreeMap()
             for(key in data.keys()){
                 val obj = data.getJSONObject(key)
-                val startValue = itemStartSelectionEvent.selectedItem.trim()
-                val endValue = itemEndSelectionEvent.selectedItem.trim()
                 val currency1: Double = if(startValue!="EUR") {
                     obj.getDouble(startValue)
                 }else{
@@ -124,11 +136,9 @@ class Plot: Activity() {
 
             plot.graph.getLineLabelStyle(XYGraphWidget.Edge.BOTTOM).format = object : Format() {
                 override fun format(obj: Any, toAppendTo: StringBuffer, pos: FieldPosition): StringBuffer {
-                    val tmp: String = (obj as Double).toString()
-                    return StringBuffer("" + tmp[0]).
-                            append(tmp.substring(2, 5)).append("-").
-                            append(tmp.substring(5, 7)).append("-").
-                            append(tmp.substring(7, 9))
+                    val date = Date((obj as Double).toLong())
+                    val formatter = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                    return StringBuffer(formatter.format(date))
                 }
                 override fun parseObject(source: String?, pos: ParsePosition?): Any? {
                     return null
